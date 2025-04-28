@@ -12,11 +12,7 @@ type Props = {
   params: { id: string };
 };
 
-interface PageProps {
-  params: { id: string }
-}
-
-const Project = ({ params }: PageProps) => {
+const Project = ({ params }: Props) => {
   const { id } = params;
   const [activeTab, setActiveTab] = useState("Board");
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
