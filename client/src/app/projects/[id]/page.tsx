@@ -1,3 +1,5 @@
+"use client"; // ✅ Important for client-side interactivity
+
 import React, { useState } from "react";
 import ProjectHeader from "@/app/projects/ProjectHeader";
 import Board from "../BoardView";
@@ -6,8 +8,11 @@ import Timeline from "../TimelineView";
 import Table from "../TableView";
 import ModalNewTask from "@/components/ModalNewTask";
 
-// Sub-component for your project page
-const ProjectPage = ({ params }: { params: { id: string } }): JSX.Element => {
+type Props = {
+  params: { id: string };
+};
+
+const Project = ({ params }: Props) => {
   const { id } = params;
   const [activeTab, setActiveTab] = useState("Board");
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
@@ -36,7 +41,4 @@ const ProjectPage = ({ params }: { params: { id: string } }): JSX.Element => {
   );
 };
 
-// The required App Router "Page" component
-export default function Page({ params }: { params: { id: string } }): Promise<JSX.Element> {
-  return Promise.resolve(<ProjectPage params={params} />);
-}
+export default Project;
